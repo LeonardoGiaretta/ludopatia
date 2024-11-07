@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<?php 
+?php 
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -25,7 +25,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['partita'])) {
     exit();
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['salva'])) {
-    
+
+    $carta1 = $_POST['segno1'] . "" . $_POST['seme1'];
+    $carta2 = $_POST['segno2'] . "" . $_POST['seme2'];
+    $puntata = $_POST['putanta'];
+    $esito = $_POST['esito'];
+
+    $sql = "INSERT INTO giocate (Carta1, Carta2, Puntata, Esito, IDGiocata) VALUES ($carta1, $carta2, $puntata, $esito)";
+
+    $result = $conn->query($sql);
+
+    if($result)
+        echo "<script>alert('giocata aggiunta con successo')</script>";
+    else
+        echo "<script>alert('giocata aggiunta con successo')</script>";
+
+
+
 }
 
 
